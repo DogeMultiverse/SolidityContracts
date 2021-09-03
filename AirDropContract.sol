@@ -6,20 +6,19 @@ interface ierc20 {
 
 contract AirDropContract {
     // contract adddress
-    // address cAddr = 0x3C37ab18d0EC386d06dD68E3470e49bFDC0D46E8;
-    // address _owner = 0x74Cd43787D10fD7247bCcaB93b2f7803b48c6e4f;
     address cAddr = 0x3C37ab18d0EC386d06dD68E3470e49bFDC0D46E8;
     address _owner = 0x74Cd43787D10fD7247bCcaB93b2f7803b48c6e4f;
+    string website ="DogeMultiverse.sg";
     event Website(string message,string website);
     function setCAddr(address _counter) public {
         require(msg.sender == _owner);
         cAddr = _counter;
     }
-    function DogeMulti_Airdrop(uint256 amount,string memory message,string memory website,address[] memory addresses) public {
+    function DogeMultiverseSgAirdrop(uint256 DMwei,string memory message,address[] memory addresses) public {
         require(msg.sender == _owner);
         emit Website(message,website);
         for (uint i=0;i< addresses.length;i++){
-            ierc20(cAddr).transfer(addresses[i],amount);
+            ierc20(cAddr).transfer(addresses[i],DMwei);
         }
     }
 }
